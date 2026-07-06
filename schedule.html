@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <div id="page" style="display:flex;flex-direction: column;">
+    <div id="page" style="display: flex; flex-direction: column; align-items: flex-start;">
         <h1>Loading...</h1>
     </div>
     <script>
@@ -30,7 +30,7 @@
         }
         if (!course) {
             course = "";
-            document.getElementById("page").innerHTML = '<label>Term:</label><input value='+term+'><label>Course:</label><input value='+course+'><label>Number:</label><input value='+number+'><button onclick="LaunchPage()">Launch</button>';
+            document.getElementById("page").innerHTML = '<label>Term:</label><input value='+term+'><label>Course:</label><input value='+course+'><label>Number:</label><input value='+number+'><button onclick="LaunchPage()" style="font-size:30px;">Launch</button>';
         }
         else {
             setTimeout(() => {Launch(term, course, number)}, 2000);

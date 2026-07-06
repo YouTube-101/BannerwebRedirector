@@ -20,7 +20,7 @@
         try {
         const query = new URLSearchParams(window.location.search);
         let term = query.get('t');
-        let course = query.get('c').toUpperCase();
+        let course = query.get('c');
         let number = query.get('n');
         if (!term) {
             const now = new Date();
@@ -44,6 +44,7 @@
             Launch(term, course, number);
         }
         function Launch(term, course, number) {
+            course = course.toUpperCase();
             window.location.href = "https://suis.sabanciuniv.edu/prod/bwckschd.p_get_crse_unsec?term_in=" + term + "&sel_subj=dummy&sel_day=dummy&sel_schd=dummy&sel_insm=dummy&sel_camp=dummy&sel_levl=dummy&sel_sess=dummy&sel_instr=dummy&sel_ptrm=dummy&sel_attr=dummy&sel_subj=" + course + "&sel_crse=" + number + "&sel_title=&sel_from_cred=&sel_to_cred=&begin_hh=0&begin_mi=0&begin_ap=a&end_hh=0&end_mi=0&end_ap=a";
         }
     </script>

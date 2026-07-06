@@ -17,6 +17,7 @@
         <h1>Loading...</h1>
     </div>
     <script>
+        try {
         const query = new URLSearchParams(window.location.search);
         let term = query.get('t');
         let course = query.get('c').toUpperCase();
@@ -34,6 +35,8 @@
         else {
             setTimeout(() => {Launch(term, course, number)}, 2000);
         }
+        }
+        catch(e) {alert(e)}
         function LaunchPage() {
             const term = document.getElementById("page").querySelectorAll("input")[0].value;
             const course = document.getElementById("page").querySelectorAll("input")[1].value;

@@ -13,11 +13,10 @@
 </head>
 
 <body>
-    <div id="page">
+    <div id="page" style="display:flex;flex-direction: column;">
         <h1>Loading...</h1>
     </div>
     <script>
-        try {
         const query = new URLSearchParams(window.location.search);
         let term = query.get('t');
         let course = query.get('c');
@@ -30,13 +29,12 @@
             number = "dummy";
         }
         if (!course) {
+            course = "";
             document.getElementById("page").innerHTML = '<label>Term:</label><input value='+term+'><label>Course:</label><input value='+course+'><label>Number:</label><input value='+number+'><button onclick="LaunchPage()">Launch</button>';
         }
         else {
             setTimeout(() => {Launch(term, course, number)}, 2000);
         }
-        }
-        catch(e) {alert(e)}
         function LaunchPage() {
             const term = document.getElementById("page").querySelectorAll("input")[0].value;
             const course = document.getElementById("page").querySelectorAll("input")[1].value;

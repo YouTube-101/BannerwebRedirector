@@ -5,9 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecting...</title>
+    <style>
+        * {
+            font-family: Arial;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="page">
+        <h1>Loading...</h1>
+    </div>
     <script>
         const query = new URLSearchParams(window.location.search);
         let term = query.get('t');
@@ -21,12 +29,19 @@
             number = "dummy";
         }
         if (!course) {
-            alert("Missing course parameter.");
+            document.getElementById("page").innerHTML = '<label>Term:</label><input value='+term+'><label>Course:</label><input value='+course+'><label>Number:</label><input value='+number+'><button onclick="LaunchPage()">Launch</button>';
         }
         else {
-            setTimeout(function () {
-                window.location.href = "https://suis.sabanciuniv.edu/prod/bwckschd.p_get_crse_unsec?term_in=" + term + "&sel_subj=dummy&sel_day=dummy&sel_schd=dummy&sel_insm=dummy&sel_camp=dummy&sel_levl=dummy&sel_sess=dummy&sel_instr=dummy&sel_ptrm=dummy&sel_attr=dummy&sel_subj=" + course + "&sel_crse=" + number + "&sel_title=&sel_from_cred=&sel_to_cred=&begin_hh=0&begin_mi=0&begin_ap=a&end_hh=0&end_mi=0&end_ap=a";
-            }, 2000);
+            setTimeout(() => {Launch(term, course, number)}, 2000);
+        }
+        function LaunchPage() {
+            const term = document.getElementById("page").querySelectorAll("input")[0].value;
+            const course = document.getElementById("page").querySelectorAll("input")[1].value;
+            const number = document.getElementById("page").querySelectorAll("input")[2].value;
+            Launch(term, course, number);
+        }
+        function Launch(term, course, number) {
+            window.location.href = "https://suis.sabanciuniv.edu/prod/bwckschd.p_get_crse_unsec?term_in=" + term + "&sel_subj=dummy&sel_day=dummy&sel_schd=dummy&sel_insm=dummy&sel_camp=dummy&sel_levl=dummy&sel_sess=dummy&sel_instr=dummy&sel_ptrm=dummy&sel_attr=dummy&sel_subj=" + course + "&sel_crse=" + number + "&sel_title=&sel_from_cred=&sel_to_cred=&begin_hh=0&begin_mi=0&begin_ap=a&end_hh=0&end_mi=0&end_ap=a";
         }
     </script>
 </body>
